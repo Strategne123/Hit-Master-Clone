@@ -1,12 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(RectTransform))]
 public class TapHandler : MonoBehaviour,IPointerClickHandler
 {
+    public static TapAction TapEvent;
+    private RectTransform _senderRect;
+    public delegate void TapAction(RectTransform rect, Vector3 position);
+
+    private void Start()
+    {
+        _senderRect = GetComponent<RectTransform>();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        TapEvent?.Invoke(_senderRect,eventData.position);
     }
 }

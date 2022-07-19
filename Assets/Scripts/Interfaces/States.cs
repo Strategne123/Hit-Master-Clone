@@ -1,5 +1,5 @@
 enum States
 {
-    Run,
-    Stay
+    Stay,
+    Run
 }
