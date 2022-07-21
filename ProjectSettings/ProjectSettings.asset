@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Kovalenko_N.E.
   productName: Hit Master Clone
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -150,9 +150,11 @@ PlayerSettings:
   m_ColorGamuts: 00000000
   targetPixelDensity: 30
   resolutionScalingMode: 0
+  resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.Kovalenko-N.E..Hit-Master-Clone
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -493,7 +495,9 @@ PlayerSettings:
   switchPlayerConnectionEnabled: 1
   switchUseNewStyleFilepaths: 0
   switchUseMicroSleepForYield: 1
+  switchEnableRamDiskSupport: 0
   switchMicroSleepForYieldTime: 25
+  switchRamDiskSpaceSize: 12
   ps4NPAgeRating: 12
   ps4NPTitleSecret: 
   ps4NPTrophyPackPath: 
@@ -635,6 +639,7 @@ PlayerSettings:
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 
+  vcxProjDefaultLanguage: 
   XboxOneProductId: 
   XboxOneUpdateKey: 
   XboxOneSandboxId: 

@@ -1,29 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Zone : MonoBehaviour
 {
     [SerializeField] private List<Enemy> enemies = new List<Enemy>();
-    public bool isEmpty
+
+    public bool IsEmpty
     {
         get
         {
             return enemies.Count == 0;
-           
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        foreach(var item in enemies)
+        foreach (var item in enemies)
         {
-            item.onDeath += OnDeath;
+            item.OnDeath += OnDeath;
         }
     }
 
-    private void OnDeath()
+    private void OnDisable()
     {
-        enemies.RemoveAt(0);
+        foreach (var item in enemies)
+        {
+            item.OnDeath -= OnDeath;
+        }
+    }
+
+    private void OnDeath(Enemy enemy)
+    {
+        enemy.OnDeath -= OnDeath;
+        enemies.Remove(enemy);
     }
 }

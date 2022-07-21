@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class AnimationHandler : MonoBehaviour
+public class AnimationHandler : MonoBehaviour, IAnimated
 {
     public static Action onShot;
 
@@ -12,26 +12,9 @@ public class AnimationHandler : MonoBehaviour
 
     private Animator _animator;
 
-    public AnimStates AnimState
+    private void Awake()
     {
-        get
-        {
-            return (AnimStates)_animator.GetInteger("State");
-        }
-        set
-        {
-            _animator.SetInteger("State", (int)value);
-        }
-    }
-
-    public void Play(int state)
-    {
-        AnimState = (AnimStates)state;
-    }
-
-    public void OnShot()
-    {
-        onShot?.Invoke();
+        _animator = GetComponent<Animator>();
     }
 
     private void GunTo(Transform destination)
@@ -51,8 +34,18 @@ public class AnimationHandler : MonoBehaviour
         GunTo(_holster);
     }
 
-    private void Awake()
+    public void OnShot()
     {
-        _animator = GetComponent<Animator>();
+        onShot?.Invoke();
+    }
+
+    public bool IsState(AnimStates state)
+    {
+        return (AnimStates)_animator.GetInteger("State") == state;
+    }
+
+    public void SetState(AnimStates state)
+    {
+        _animator.SetInteger("State", (int)state);
     }
 }

@@ -1,13 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Shoot : MonoBehaviour
 {
-    [SerializeField] private Bullet _bullet;
     [SerializeField] private int _quantity;
-    [SerializeField] private List<Bullet> _pool = new List<Bullet>();
+    [SerializeField] private Bullet _bullet;
+    [SerializeField] private List<Bullet> _pool;
+
+    private void OnEnable()
+    {
+        AnimationHandler.onShot += OnShot;
+    }
 
     private void Start()
     {
@@ -16,7 +20,11 @@ public class Shoot : MonoBehaviour
         {
             CreateBullet();
         }
-        AnimationHandler.onShot += OnShot;
+    }
+
+    private void OnDisable()
+    {
+        AnimationHandler.onShot -= OnShot;
     }
 
     private Bullet CreateBullet()

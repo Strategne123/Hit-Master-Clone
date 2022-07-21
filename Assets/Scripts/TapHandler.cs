@@ -9,7 +9,7 @@ public class TapHandler : MonoBehaviour,IPointerClickHandler
     private RectTransform _senderRect;
     public delegate void TapAction(RectTransform rect, Vector3 position);
 
-    private void Start()
+    private void Awake()
     {
         _senderRect = GetComponent<RectTransform>();
     }
