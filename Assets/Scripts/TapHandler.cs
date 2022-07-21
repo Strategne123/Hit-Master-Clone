@@ -14,6 +14,14 @@ public class TapHandler : MonoBehaviour,IPointerClickHandler
         _senderRect = GetComponent<RectTransform>();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         TapEvent?.Invoke(_senderRect,eventData.position);
